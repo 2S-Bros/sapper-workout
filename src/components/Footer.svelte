@@ -1,9 +1,9 @@
 <style lang="scss" scoped>
   footer {
-    background: var(--dark-grey);
+    background: var(--light-grey);
     p {
-      color: var(--white);
       text-align: center;
+      color: var(--black);
     }
   }
 </style>

@@ -1,5 +1,11 @@
 @import "./vars.scss";
 
+.dark-mode {
+  --bgColor: var(--dark-grey);
+  --textColor: var(--white);
+  --lineColor: var(--light-grey);
+}
+
 *,
 *:before,
 *:after {
@@ -23,11 +29,8 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.dark-mode {
-  --bgColor: var(--dark-grey);
-  --TextColor: var(--white);
+  background: var(--bgColor);
+  color: var(--textColor);
 }
 
 #modal-root {
@@ -46,7 +49,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif(--headingFont);
+  font-family: var(--headingFont);
   margin: var(--margin);
   line-height: 1.15;
   color: var(--textColor);

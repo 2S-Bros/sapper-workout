@@ -6,9 +6,11 @@
   --blue: blue;
   --red: red;
 
-  --textColor: var(--black);
+  /* Template colors */
+  --textColor: var(--dark-grey);
   --primaryColor: var(--blue);
-  --bgColor: var(--light-grey);
+  --bgColor: var(--white);
+  --lineColor: var(--dark-grey);
 
   --cardRadius: 15px;
   --buttonRadius: 15px;
