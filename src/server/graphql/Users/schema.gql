@@ -1,0 +1,39 @@
+export default `
+  type User {
+      _id: ID!
+      username: String
+      password: String
+      displayName: String
+      decks: [ID]
+      roles: [String]
+      cards: [ID]
+  }
+
+  type Auth {
+    user: User
+    token: String
+  }
+
+  type Query {
+      users: [User]
+      user(username: String!): User
+      me: User
+  }
+
+  type Mutation {
+    createUser(
+      username: String!
+      password: String!
+      displayName: String
+    ): Auth
+    updateUser(
+      username: String
+      displayName: String
+    ): User
+    addRole(_id: ID!, role: String!): Boolean
+    addCard(_id: ID!, cardId: ID!): User
+    addDeck(_id: ID!, deckId: ID!): User
+    login(username: String!, password: String): Auth
+    changePassword(oldPass: String!, newPass: String!): Boolean
+  }
+`
