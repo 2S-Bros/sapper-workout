@@ -33,6 +33,12 @@ body {
   color: var(--textColor);
 }
 
+#sapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 #modal-root {
   position: relative;
   z-index: var(--highestLevel);
