@@ -1,8 +1,9 @@
 const user = require('../../models/user');
+const role = require('../../models/role');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 
-exports = {
+module.exports = {
   Mutation: {
     addCard: (_, args) => {
       try {
@@ -26,9 +27,11 @@ exports = {
     },
     addRole: (_, args) => {
       try {
-        const res = user.updateOne(
+        user.updateOne(
           { _id: { $eq: args._id } },
           { $addToSet: { roles: args.role } }).exec();
+        role.findOneAndUpdate({ name: { $eq: args.role } },
+          { $addToSet: { users: args._id } });
         return true;
       } catch (e) {
         return false;

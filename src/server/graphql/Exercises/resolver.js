@@ -1,6 +1,6 @@
 const Exercises = require('../../models/exercise');
 
-exports = {
+module.exports = {
   Query: {
     exercise: (obj, { _id }) => {
       const exercise = Exercises.findOne({ _id });

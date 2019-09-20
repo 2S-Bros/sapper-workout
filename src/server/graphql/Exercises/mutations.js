@@ -2,7 +2,7 @@ const Exercises = require('../../models/exercise');
 
 // TODO: Make sure user has permission to update/delete comment
 
-exports = {
+module.exports = {
   Mutation: {
     createExercise: async (obj, { exerciseInput }, { userToken }) => {
       try {

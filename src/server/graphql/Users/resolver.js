@@ -1,6 +1,6 @@
 const userDAO = require('../../models/user');
 
-exports = {
+module.exports = {
   Query: {
     users() {
       const users = userDAO.find().exec();

@@ -1,7 +1,7 @@
 const { GraphQLScalarType } = require('graphql');
 const { Kind } = require('graphql/language');
 
-exports = {
+module.exports = {
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'Date custom scalar type',

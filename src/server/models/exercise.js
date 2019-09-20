@@ -14,4 +14,4 @@ const exerciseSchema = new Schema({
   // TODO: add workouts
 });
 
-exports = mongoose.model('Exercise', exerciseSchema, 'Exercise');
+module.exports = mongoose.model('Exercise', exerciseSchema, 'Exercise');

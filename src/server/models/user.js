@@ -12,4 +12,4 @@ const userSchema = new Schema({
 
 userSchema.index({ username: 1 });
 
-exports = mongoose.model('User', userSchema, 'User');
+module.exports = mongoose.model('User', userSchema, 'User');
