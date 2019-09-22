@@ -1,9 +1,13 @@
 <script>
+  import Switch from "./Switch.svelte";
   export let segment;
 </script>
 
 <style lang="scss" scoped>
   nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
     font-weight: 300;
     padding: 0 1em;
@@ -58,5 +62,8 @@
     <li class={segment === 'blog' ? 'selected' : ''}>
       <a rel="prefetch" href="blog">Blog</a>
     </li>
+    <li />
+    <li />
   </ul>
+  <Switch />
 </nav>

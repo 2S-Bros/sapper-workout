@@ -1,6 +1,6 @@
 @import "./vars.scss";
 
-.dark-mode {
+[data-theme="dark"] {
   --bgColor: var(--dark-grey);
   --textColor: var(--white);
   --lineColor: var(--light-grey);
