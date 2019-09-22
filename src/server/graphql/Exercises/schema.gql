@@ -1,0 +1,36 @@
+export default `
+  type Exercise {
+      _id: ID!
+      title: String!
+      authorId: ID!
+      canEdit: Boolean
+      isPremium: Boolean
+      description: String
+      intensity: Int
+      tags: [String]
+      createdAt: Date
+      updatedAt: Date
+      # workouts: [Workout]
+  }
+
+  input ExerciseInput {
+    title: String!
+    description: String
+    intensity: Int
+    tags: [String]
+    createdAt: Date
+    updatedAt: Date
+  }
+
+  extend type Query {
+    exercises(limit: Int): [Exercise]
+    exercise(_id: ID!): Exercise
+  }
+
+  extend type Mutation {
+    createExercise(exerciseInput: ExerciseInput!): Exercise
+    updateExercise(_id: ID!, exerciseInput: ExerciseInput!): Exercise
+    deleteExercise(_id: ID!): Exercise
+    toggleIsPremium(_id: ID!, isPremium: Boolean): Exercise
+  }
+`

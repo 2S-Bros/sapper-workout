@@ -1,0 +1,16 @@
+export default `
+  type Role {
+      _id: ID!
+      name: String
+      users: [User]
+  }
+
+  extend type Query {
+      roles: [Role]
+      role(name: String!): Role
+  }
+
+  extend type Mutation {
+    createRole(name: String!): Boolean
+  }
+`
