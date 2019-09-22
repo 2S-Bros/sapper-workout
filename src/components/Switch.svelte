@@ -24,10 +24,6 @@
     &-wrapper {
       display: flex;
       align-items: center;
-      em {
-        margin-left: 10px;
-        font-size: 1rem;
-      }
     }
     input {
       display: none;

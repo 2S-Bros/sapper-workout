@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
@@ -8,8 +8,9 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   roles: [String],
   username: { type: String, required: true, unique: true },
-});
+  theme: String
+})
 
-userSchema.index({ username: 1 });
+userSchema.index({ username: 1 })
 
-module.exports = mongoose.model('User', userSchema, 'User');
+module.exports = mongoose.model("User", userSchema, "User")

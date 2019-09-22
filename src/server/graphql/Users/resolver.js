@@ -1,27 +1,31 @@
-const userDAO = require('../../models/user');
+const userDAO = require("../../models/user")
 
 module.exports = {
   Query: {
     users() {
-      const users = userDAO.find().exec();
+      const users = userDAO.find().exec()
       if (!users) {
-        throw new Error('Error');
+        throw new Error("Error")
       }
-      return users;
+      return users
     },
     user(obj, args) {
-      const myUser = userDAO.findOne({ username: { $eq: args.username } });
+      const myUser = userDAO.findOne({ username: { $eq: args.username } })
       if (!myUser) {
-        throw new Error('Error');
+        throw new Error("Error")
       }
-      return myUser;
+      return myUser
     },
     me(_, args, { userId }) {
       if (!userId) {
-        throw new Error("You are not authenticated");
+        throw new Error("You are not authenticated")
       }
 
-      return userDAO.findById(userId);
+      return userDAO.findById(userId)
+    },
+    getTheme(_, args, { userId }) {
+      const user = userDAO.findOne({ _id: { $eq: userId } })
+      return user.theme || "light"
     }
-  },
-};
+  }
+}

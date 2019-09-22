@@ -1,7 +1,7 @@
-const user = require('../../models/user');
-const role = require('../../models/role');
-const bcrypt = require('bcrypt');
-const jsonwebtoken = require('jsonwebtoken');
+const user = require("../../models/user")
+const role = require("../../models/role")
+const bcrypt = require("bcrypt")
+const jsonwebtoken = require("jsonwebtoken")
 
 module.exports = {
   Mutation: {
@@ -9,97 +9,112 @@ module.exports = {
       try {
         const res = user.findOneAndUpdate(
           { id: { $eq: args.id } },
-          { $addToSet: { cards: args.cardId } });
-        return res;
+          { $addToSet: { cards: args.cardId } }
+        )
+        return res
       } catch (e) {
-        return e.message;
+        return e.message
       }
     },
     addDeck: (_, args) => {
       try {
         const res = user.findOneAndUpdate(
           { id: { $eq: args.id } },
-          { $addToSet: { decks: args.deckId } });
-        return res;
+          { $addToSet: { decks: args.deckId } }
+        )
+        return res
       } catch (e) {
-        return e.message;
+        return e.message
       }
     },
     addRole: (_, args) => {
       try {
-        user.updateOne(
-          { _id: { $eq: args._id } },
-          { $addToSet: { roles: args.role } }).exec();
-        role.findOneAndUpdate({ name: { $eq: args.role } },
-          { $addToSet: { users: args._id } });
-        return true;
+        user
+          .updateOne(
+            { _id: { $eq: args._id } },
+            { $addToSet: { roles: args.role } }
+          )
+          .exec()
+        role.findOneAndUpdate(
+          { name: { $eq: args.role } },
+          { $addToSet: { users: args._id } }
+        )
+        return true
       } catch (e) {
-        return false;
+        return false
       }
     },
     changePassword: async (_, { oldPass, newPass }, { userId }) => {
-      const foundUser = await user.findById(userId);
+      const foundUser = await user.findById(userId)
 
       if (!foundUser) {
-        throw new Error('Authentication error');
+        throw new Error("Authentication error")
       }
 
-      const valid = await bcrypt.compare(oldPass, foundUser.password);
+      const valid = await bcrypt.compare(oldPass, foundUser.password)
 
       if (!valid) {
-        throw new Error('Incorrect password');
+        throw new Error("Incorrect password")
       }
 
-      foundUser.password = bcrypt.hashSync(newPass, 10);
-      const status = await foundUser.save();
-      return true;
+      foundUser.password = bcrypt.hashSync(newPass, 10)
+      const status = await foundUser.save()
+      return true
     },
     createUser: async (_, args) => {
       try {
-        const userData = args;
-        userData.password = bcrypt.hashSync(args.password, 10);
-        const res = await user.create(userData);
+        const userData = args
+        userData.password = bcrypt.hashSync(args.password, 10)
+        const res = await user.create(userData)
         return {
           token: jsonwebtoken.sign(
             { id: res._id, username: res.username },
             process.env.JWT_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: "1d" }
           ),
-          user: res,
-        };
+          user: res
+        }
       } catch (e) {
-        throw new Error('Error creating account');
+        throw new Error("Error creating account")
       }
     },
     login: async (_, { username, password }) => {
-      const foundUser = await user.findOne({ username: { $eq: username } });
+      const foundUser = await user.findOne({ username: { $eq: username } })
 
       if (!foundUser) {
-        throw new Error('Invalid username');
+        throw new Error("Invalid username")
       }
 
-      const valid = await bcrypt.compare(password, foundUser.password);
+      const valid = await bcrypt.compare(password, foundUser.password)
 
       if (!valid) {
-        throw new Error('Incorrect password');
+        throw new Error("Incorrect password")
       }
 
       return {
         token: jsonwebtoken.sign(
           { id: foundUser._id, username: foundUser.username },
           process.env.JWT_SECRET,
-          { expiresIn: '1d' }
+          { expiresIn: "1d" }
         ),
-        user: foundUser,
-      };
+        user: foundUser
+      }
     },
     updateUser: (_, args, { userId }) => {
       try {
-        const res = user.findOneAndUpdate({ _id: { $eq: userId } }, args);
-        return res;
+        const res = user.findOneAndUpdate({ _id: { $eq: userId } }, args)
+        return res
       } catch (e) {
-        throw new Error(e.message);
+        throw new Error(e.message)
       }
     },
-  },
-};
+    changeTheme: (_, { theme }, { userId }) => {
+      try {
+        user.findOneAndUpdate({ _id: { $eq: userId } }, theme)
+        return true
+      } catch (e) {
+        throw new Error(e.message)
+      }
+    }
+  }
+}
