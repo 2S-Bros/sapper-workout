@@ -24,6 +24,9 @@
     &-wrapper {
       display: flex;
       align-items: center;
+      p {
+        margin-right: 1rem;
+      }
     }
     input {
       display: none;
@@ -68,6 +71,9 @@
 
 <!-- TODO: Make dynamic and update styles, not just static switch for darkmode -->
 <div class="theme-switch-wrapper">
+  <p>
+    <strong>Dark Mode</strong>
+  </p>
   <label class="theme-switch" for="checkbox">
     <input type="checkbox" id="checkbox" />
     <div class="slider round" />

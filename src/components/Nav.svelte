@@ -1,5 +1,4 @@
 <script>
-  import Switch from "./Switch.svelte";
   export let segment;
 </script>
 
@@ -45,6 +44,9 @@
     <li class={segment === 'dashboard' ? 'selected' : ''}>
       <a href="dashboard">Dashboard</a>
     </li>
+    <li class={segment === 'user-settings' ? 'selected' : ''}>
+      <a href="user-settings">User Settings</a>
+    </li>
     <li class={segment === 'about' ? 'selected' : ''}>
       <a href="about">About</a>
     </li>
@@ -65,5 +67,4 @@
     <li />
     <li />
   </ul>
-  <Switch />
 </nav>
