@@ -6,6 +6,12 @@
   --lineColor: var(--light-grey);
 }
 
+[data-theme="oled"] {
+  --bgColor: var(--black);
+  --textColor: var(--white);
+  --lineColor: var(--light-grey);
+}
+
 *,
 *:before,
 *:after {

@@ -1,5 +1,5 @@
 <script>
-  import Switch from "../components/Switch.svelte";
+  import ThemeSelect from "../components/ThemeSelect.svelte";
 </script>
 
 <svelte:head>
@@ -12,4 +12,4 @@
   people logged in. This will have a link from user menu in the nav.
 </p>
 
-<Switch />
+<ThemeSelect />
