@@ -1,3 +1,9 @@
+<script>
+  import Modal from "../components/Modal.svelte";
+  let isActive = false;
+  let maxWidth = "375px";
+</script>
+
 <style lang="scss" scoped>
   h1,
   p {
@@ -29,3 +35,10 @@
 
 <h1>Epic Gains</h1>
 <p>(Name still in progress :p)</p>
+
+<button on:click={() => (isActive = true)}>Test Modal</button>
+{#if isActive}
+  <Modal on:close={() => (isActive = false)} {maxWidth}>
+    <p>I'm a test modal</p>
+  </Modal>
+{/if}
