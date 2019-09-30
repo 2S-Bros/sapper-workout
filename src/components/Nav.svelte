@@ -61,6 +61,9 @@
     <li class={segment === 'library' ? 'selected' : ''}>
       <a rel="prefetch" href="library">Library</a>
     </li>
+    <li class={segment === 'timer' ? 'selected' : ''}>
+      <a href="timer">Timer</a>
+    </li>
     <li class={segment === 'blog' ? 'selected' : ''}>
       <a rel="prefetch" href="blog">Blog</a>
     </li>
