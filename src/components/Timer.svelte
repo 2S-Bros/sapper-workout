@@ -103,6 +103,4 @@
 <button on:click={() => resetTimer(true)}>Reset</button>
 
 <h2>Now: {isResting ? 'Rest' : 'PLACEHOLDER'}</h2>
-<h2>
-  Next: {currentExerciseNumber > numberOfExercises ? 'PLACEHOLDER' : 'Rest'}
-</h2>
+<h2>Next: PLACEHOLDER</h2>
