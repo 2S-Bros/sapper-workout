@@ -1,11 +1,30 @@
 <script>
-  import { onDestroy, onMount } from "svelte";
+  import { onDestroy } from "svelte";
   import { formatTime } from "../utils/format";
+  // const audio1 = new Audio("/champ.mp3");
 
-  let duration = 45;
-  let currentTime = duration;
+  export let numberOfExercises = 3;
+  export let numberOfSets = 2;
+  export let duration = 45;
+  export let restDuration = 15;
+  export let roundRestDuration = 30;
+
   let timer = undefined;
   let isTimerInProgress = false;
+  let isResting = false;
+  let currentTime = duration;
+  let currentExerciseNumber = 1;
+  let currentSetNumber = 1;
+
+  function tick() {
+    const time = currentTime - 1;
+    if (time <= 0) {
+      isResting = !isResting;
+      checkReset();
+    } else {
+      currentTime = time;
+    }
+  }
 
   function toggleTimer() {
     if (!isTimerInProgress) {
@@ -18,18 +37,48 @@
     }
   }
 
-  function tick() {
-    const time = currentTime - 1;
-    if (time <= 0) {
-      resetTimer();
-    } else {
-      currentTime = time;
+  function checkReset(willSkipExercise) {
+    let isHardReset = false;
+    if (!willSkipExercise) {
+      // audio1.play();
     }
+
+    if (isResting) {
+      return resetTimer(isHardReset, willSkipExercise);
+    } else if (currentExerciseNumber >= numberOfExercises) {
+      if (currentSetNumber >= numberOfSets) {
+        isHardReset = true;
+      } else {
+        currentExerciseNumber = 1;
+        currentSetNumber += 1;
+      }
+    } else {
+      currentExerciseNumber += 1;
+    }
+    return resetTimer(isHardReset, willSkipExercise);
   }
 
-  function resetTimer() {
-    currentTime = duration;
+  function resetTimer(isHardReset, willSkipExercise) {
     clearInterval(timer);
+
+    if (isHardReset) {
+      timer = undefined;
+      isTimerInProgress = false;
+      currentTime = duration;
+      currentSetNumber = 1;
+      currentExerciseNumber = 1;
+      isResting = false;
+    } else {
+      timer =
+        willSkipExercise && !isTimerInProgress
+          ? undefined
+          : setInterval(tick, 1000);
+      const restTime =
+        currentExerciseNumber >= numberOfExercises
+          ? roundRestDuration
+          : restDuration;
+      currentTime = isResting ? restTime : duration;
+    }
   }
 
   onDestroy(() => {
@@ -38,12 +87,22 @@
   });
 </script>
 
-<div>{formatTime(currentTime)}</div>
-<br />
-<label>
-  exercise duration:
-  <input type="number" bind:value={duration} min="1" max="3600" />
-</label>
-<br />
-<button on:click={resetTimer}>reset</button>
+<style>
+
+</style>
+
+<h2>Set: {currentSetNumber} / {numberOfSets}</h2>
+
+<h2>Exercise: {currentExerciseNumber} / {numberOfExercises}</h2>
+
+<h2>{isResting ? 'Rest' : 'Exercise'} Time Remaining</h2>
+<h1>{formatTime(currentTime)}</h1>
+
 <button on:click={toggleTimer}>{isTimerInProgress ? 'Pause' : 'Start'}</button>
+<button on:click={() => checkReset(true)}>Skip</button>
+<button on:click={() => resetTimer(true)}>Reset</button>
+
+<h2>Now: {isResting ? 'Rest' : 'PLACEHOLDER'}</h2>
+<h2>
+  Next: {currentExerciseNumber > numberOfExercises ? 'PLACEHOLDER' : 'Rest'}
+</h2>
