@@ -1,10 +1,10 @@
 <style lang="scss" scoped>
   footer {
-    background: var(--light-grey);
+    background: var(--blue-600);
     margin-top: auto;
     p {
       text-align: center;
-      color: var(--black);
+      color: var(--white);
     }
   }
 </style>

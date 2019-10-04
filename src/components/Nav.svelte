@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
+    border-bottom: 1px solid rgba(249, 170, 51, 0.2);
     font-weight: 300;
     padding: 0 1em;
   }
@@ -22,7 +22,7 @@
     &.selected {
       position: relative;
       display: inline-block;
-      border-bottom: 1px solid var(--red);
+      border-bottom: 1px solid var(--primaryColor);
     }
   }
 
@@ -31,13 +31,16 @@
     padding: 1em 0.5em;
     display: block;
     color: var(--textColor);
+    &.brand {
+      color: var(--primaryColor);
+    }
   }
 </style>
 
 <nav>
   <ul>
     <li class={segment === undefined ? 'selected' : ''}>
-      <a href=".">
+      <a href="." class="brand">
         <strong>EPIC GAINS</strong>
       </a>
     </li>
@@ -49,6 +52,9 @@
     </li>
     <li class={segment === 'workouts' ? 'selected' : ''}>
       <a rel="prefetch" href="workouts">Workouts</a>
+    </li>
+    <li class={segment === 'timer' ? 'selected' : ''}>
+      <a href="timer">Timer</a>
     </li>
   </ul>
 </nav>
