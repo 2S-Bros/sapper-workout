@@ -40,9 +40,6 @@
       <li>
         <a rel="prefetch" href="workouts">Workouts</a>
       </li>
-      <li>
-        <a href="timer">Timer</a>
-      </li>
     </ul>
   </nav>
 
