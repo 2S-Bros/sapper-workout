@@ -1,16 +1,21 @@
 :root {
-  --white: #fff;
-  --light-grey: #e2e2e2;
-  --dark-grey: #222;
+  --white: #fefefe;
+  --lightest-grey: #ecf0f2;
+  --light-grey: #d2dbdf;
+  --grey: #253840;
+  --dark-grey: #172529;
   --black: #000;
-  --blue: blue;
-  --red: red;
+  --blue-600: #4a6572;
+  --blue-700: #334955;
+  --blue-800: #232f34;
+  --orange-500: #f9aa33;
 
   /* Template colors */
   --textColor: var(--dark-grey);
-  --primaryColor: var(--blue);
+  --primaryColor: var(--orange-500);
+  --containerColor: var(--light-grey);
   --bgColor: var(--white);
-  --lineColor: var(--dark-grey);
+  --lineColor: var(--lightest-grey);
 
   --cardRadius: 15px;
   --buttonRadius: 15px;
@@ -21,12 +26,12 @@
   --smallFontSize: 0.8rem;
   --smallestFontSize: 0.512rem;
 
-  --h-one: 1.953rem;
-  --h-two: 1.563rem;
-  --h-three: 1.25rem;
-  --h-four: var(--baseFontSize);
-  --h-five: var(--smallFontSize);
-  --h-six: var(--baseNavSize);
+  --h-1: 1.953rem;
+  --h-2: 1.563rem;
+  --h-3: 1.25rem;
+  --h-4: var(--baseFontSize);
+  --h-5: var(--smallFontSize);
+  --h-6: var(--baseNavSize);
 
   /* Z-Index */
   --headerLevel: 10;

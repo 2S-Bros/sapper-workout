@@ -1,9 +1,9 @@
 @import "./vars.scss";
 
 [data-theme="dark"] {
-  --bgColor: var(--dark-grey);
+  --bgColor: var(--blue-800);
   --textColor: var(--white);
-  --lineColor: var(--light-grey);
+  // --lineColor: var(--light-grey);
 }
 
 [data-theme="oled"] {
@@ -72,27 +72,28 @@ h6 {
 }
 
 h1 {
-  font-size: var(--h-one);
+  color: var(--primaryColor);
+  font-size: var(--h-1);
 }
 
 h2 {
-  font-size: var(--h-two);
+  font-size: var(--h-2);
 }
 
 h3 {
-  font-size: var(--h-three);
+  font-size: var(--h-t3);
 }
 
 h4 {
-  font-size: var(--h-four);
+  font-size: var(--h-4);
 }
 
 h5 {
-  font-size: var(--h-five);
+  font-size: var(--h-5);
 }
 
 h6 {
-  font-size: var(--h-six);
+  font-size: var(--h-6);
 }
 
 p {
