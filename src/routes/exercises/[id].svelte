@@ -13,19 +13,22 @@
 
 <script>
   export let exercise;
+  import ExerciseForm from "../../components/ExerciseForm.svelte";
 </script>
 
 <svelte:head>
-  <title>{exercise.title}</title>
+  <title>{exercise.name}</title>
 </svelte:head>
 
-<h1>{exercise.title}</h1>
-<h3>Intensity: {exercise.intensity}</h3>
+<h1>{exercise.name}</h1>
+<!-- <h3>Intensity: {exercise.intensity}</h3>
 <p>{exercise.description}</p>
 
 <h3>Body parts worked:</h3>
 <ul>
-  {#each exercise.tags as tag}
-    <li>{tag}</li>
+  {#each exercise.categories as category}
+    <li>{category}</li>
   {/each}
-</ul>
+</ul> -->
+
+<ExerciseForm {exercise} />

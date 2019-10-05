@@ -50,8 +50,14 @@ body {
   z-index: var(--highestLevel);
 }
 
+main,
 #main {
   overflow: hidden;
+  position: relative;
+  max-width: 56em;
+  padding: 2em;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 h1,

@@ -1,60 +1,51 @@
-// Ordinarily, you'd generate this data from markdown files in your
-// repo, or fetch them from a database of some kind. But in order to
-// avoid unnecessary dependencies in the starter template, and in the
-// service of obviousness, we're just going to leave it here.
-
-// This file is called `exercises.js` rather than `exercises.js`, because
-// we don't want to create an `/blog/posts` route — the leading
-// underscore tells Sapper not to do that.
-
 const workouts = [
   {
     id: "1",
-    title: "full body workout",
+    name: "full body workout",
     intensity: 2,
     description: "A basic workout for the whole body. winning!",
     exercises: [
       {
         id: "1",
-        title: "Pull-ups",
+        name: "Pull-ups",
         intensity: 2,
-        tags: ["back", "arms"],
+        categories: ["back", "arms"],
         description: "pull your body up and down on a bar. winning!"
       },
       {
         id: "2",
-        title: "Pushups",
+        name: "Pushups",
         intensity: 2,
-        tags: ["chest", "arms"],
+        categories: ["chest", "arms"],
         description: "push up and down on the ground. winning!"
       },
       {
         id: "3",
-        title: "Body Squats",
+        name: "Body Squats",
         intensity: 2,
-        tags: ["legs"],
+        categories: ["legs"],
         description: "squat up and down on the ground. winning!"
       }
     ]
   },
   {
     id: "1",
-    title: "leg workout",
+    name: "leg workout",
     intensity: 2,
     description: "A basic workout for legs. winning!",
     exercises: [
       {
         id: "1",
-        title: "Body Squats",
+        name: "Body Squats",
         intensity: 2,
-        tags: ["legs"],
+        categories: ["legs"],
         description: "squat up and down on the ground. winning!"
       },
       {
         id: "2",
-        title: "Run up the stairs",
+        name: "Run up the stairs",
         intensity: 3,
-        tags: ["legs", "cardio"],
+        categories: ["legs", "cardio"],
         description: "run up and down stairs until you throw up. winning!"
       }
     ]

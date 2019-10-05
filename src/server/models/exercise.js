@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const exerciseSchema = new Schema({
@@ -8,10 +8,10 @@ const exerciseSchema = new Schema({
   description: String,
   intensity: Number,
   isPremium: Boolean,
-  tags: [String],
-  title: String,
-  updatedAt: Date,
+  categories: [String],
+  name: String,
+  updatedAt: Date
   // TODO: add workouts
-});
+})
 
-module.exports = mongoose.model('Exercise', exerciseSchema, 'Exercise');
+module.exports = mongoose.model("Exercise", exerciseSchema, "Exercise")

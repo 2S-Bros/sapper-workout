@@ -25,7 +25,7 @@
 <ul>
   {#each exercises as exercise}
     <li>
-      <a rel="prefetch" href="exercises/{exercise.id}">{exercise.title}</a>
+      <a rel="prefetch" href="exercises/{exercise.id}">{exercise.name}</a>
     </li>
   {/each}
 </ul>

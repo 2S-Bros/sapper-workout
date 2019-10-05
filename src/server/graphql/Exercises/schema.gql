@@ -1,23 +1,23 @@
 export default `
   type Exercise {
       _id: ID!
-      title: String!
+      name: String!
       authorId: ID!
       canEdit: Boolean
       isPremium: Boolean
       description: String
       intensity: Int
-      tags: [String]
+      categories: [String]
       createdAt: Date
       updatedAt: Date
       # workouts: [Workout]
   }
 
   input ExerciseInput {
-    title: String!
+    name: String!
     description: String
     intensity: Int
-    tags: [String]
+    categories: [String]
     createdAt: Date
     updatedAt: Date
   }
