@@ -3,7 +3,7 @@ import workouts from "./_workouts.js"
 const contents = JSON.stringify(
   workouts.map(workout => {
     return {
-      title: workout.title,
+      name: workout.name,
       id: workout.id
     }
   })
