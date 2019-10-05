@@ -9,6 +9,10 @@
   let categories = (exercise && exercise.categories) || [];
 
   let allCategories = ["arms", "chest", "legs", "cardio", "abs", "full body"];
+
+  function submit() {
+    console.log("submitted");
+  }
 </script>
 
 <style lang="scss">
@@ -21,37 +25,43 @@
   }
 </style>
 
-<label for="exercise-name">
-  <span>Name</span>
-  <input id="exercise-name" bind:value={name} />
-</label>
-
-<label>
-  <span>Intensity</span>
-  <input
-    id="exercise-intensity-number"
-    type="number"
-    bind:value={intensity}
-    min="1"
-    max="4" />
-  <input
-    id="exercise-intensity-range"
-    type="range"
-    bind:value={intensity}
-    min="1"
-    max="4" />
-</label>
-
-<label for="exercise-description">
-  <span>Description</span>
-  <textarea id="exercise-description" bind:value={description} />
-  {@html marked(description)}
-</label>
-
-<h4>Categories</h4>
-{#each allCategories as category}
-  <label>
-    <input type="checkbox" bind:group={categories} value={category} />
-    {category}
+<form action={submit}>
+  <label for="exercise-name">
+    <span>Name</span>
+    <input id="exercise-name" bind:value={name} />
   </label>
-{/each}
+
+  <label>
+    <span>Intensity</span>
+    <input
+      id="exercise-intensity-number"
+      type="number"
+      bind:value={intensity}
+      min="1"
+      max="4" />
+    <input
+      id="exercise-intensity-range"
+      type="range"
+      bind:value={intensity}
+      min="1"
+      max="4" />
+  </label>
+
+  <label for="exercise-description">
+    <span>Description</span>
+    <textarea id="exercise-description" bind:value={description} />
+    {@html marked(description)}
+  </label>
+
+  <h4>Categories</h4>
+  {#each allCategories as category}
+    <label>
+      <input type="checkbox" bind:group={categories} value={category} />
+      {category}
+    </label>
+  {/each}
+
+  {#if !exercise}
+    <button class="submit">Create Exercise</button>
+  {/if}
+</form>
