@@ -9,21 +9,21 @@ module.exports = {
       }
       return users
     },
-    user(obj, args) {
+    user(_, args) {
       const myUser = userDAO.findOne({ username: { $eq: args.username } })
       if (!myUser) {
         throw new Error("Error")
       }
       return myUser
     },
-    me(_, args, { userId }) {
+    me(_, __, { userId }) {
       if (!userId) {
         throw new Error("You are not authenticated")
       }
 
       return userDAO.findById(userId)
     },
-    getTheme(_, args, { userId }) {
+    getTheme(_, __, { userId }) {
       const user = userDAO.findOne({ _id: { $eq: userId } })
       return user.theme || "light"
     }
