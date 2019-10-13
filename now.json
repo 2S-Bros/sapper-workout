@@ -2,8 +2,8 @@
   "version": 1,
   "build": {
     "env": {
-      "JWT_SECRET": "drewrocks",
-      "DB_URL": "mongodb://tester:testing123@ds219055.mlab.com:19055/2s-workout"
+      "JWT_SECRET": "@jwt_secret",
+      "DB_URL": "@db_url"
     }
   }
 }
