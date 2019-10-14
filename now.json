@@ -5,5 +5,13 @@
       "DB_URL": "@db_url"
     }
   },
-  "version": 1
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "__sapper__/build"
+      }
+    }
+  ]
 }
